@@ -70,7 +70,7 @@ resource "aws_route_table" "public" {
   )
 }
 #private route table
-resource "aws_route_table" "public" {
+resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
   tags = merge(
     local.common_tags,
@@ -82,7 +82,7 @@ resource "aws_route_table" "public" {
 }
 
 #db route table
-resource "aws_route_table" "public" {
+resource "aws_route_table" "db" {
   vpc_id = aws_vpc.main.id
   tags = merge(
     local.common_tags,
