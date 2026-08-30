@@ -151,3 +151,17 @@ resource "aws_route_table_association" "db" {
   subnet_id      = aws_subnet.db[count.index].id
   route_table_id = aws_route_table.db.id
 }
+resource "aws_db_subnet_group" "roboshop" {
+ name = "${var.Project}-${var.Environment}"
+ description = "Subnet group for RDS instances"
+ subnet_ids = [
+   aws_subnet.db[0].id,
+   aws_subnet.db[1].id
+ ]
+ tags= merge(
+    local.common_tags,
+    {
+        Name = "${var.Project}-${var.Environment}-db-subnet-group"
+        } 
+  )
+}

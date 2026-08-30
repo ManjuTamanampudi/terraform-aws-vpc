@@ -13,3 +13,6 @@ output "subnet_private"{
 output "subnet_db"{
     value = aws_subnet.db[*].id
 }
+output "db_subnet_group_name"{
+    value = aws_db_subnet_group.roboshop.name
+}
